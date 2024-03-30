@@ -5,7 +5,6 @@ import Nat "mo:base/Nat";
 import Iter "mo:base/Iter";
 import Text "mo:base/Text";
 
-// Define the actor
 actor EventManager {
 
     type Event = {
@@ -60,7 +59,6 @@ actor EventManager {
 
     // Get all events
     public query func getEvents(): async [Event] {
-        // Add authorization check here
         Iter.toArray(events.vals())
     };
 
@@ -102,7 +100,7 @@ actor EventManager {
         true
     };
 
-    public query func showEvents() : async Text {
+    public query func showEvents() : async Text { // Show all events with infos clear
         var output: Text = "\n_____EVENTS_____";
         for (event: Event in events.vals()) {
             output #= "\nEvent Name: " # event.title;
